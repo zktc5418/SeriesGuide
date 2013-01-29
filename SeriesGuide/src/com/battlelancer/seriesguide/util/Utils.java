@@ -803,15 +803,15 @@ public class Utils {
                     if (!TextUtils.isEmpty(imdbId)) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("imdb:///title/"
                                 + imdbId + "/"));
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//                        try {
-//                            activity.startActivity(intent);
-//                        } catch (ActivityNotFoundException e) {
-                            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(IMDB_TITLE_URL
-                                    + imdbId));
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                            activity.startActivity(intent);
-//                        }
+                        // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                        // try {
+                        // activity.startActivity(intent);
+                        // } catch (ActivityNotFoundException e) {
+                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(IMDB_TITLE_URL
+                                + imdbId));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                        activity.startActivity(intent);
+                        // }
                     } else {
                         Toast.makeText(activity,
                                 activity.getString(R.string.show_noimdbentry), Toast.LENGTH_LONG)
@@ -839,17 +839,15 @@ public class Utils {
                                 .sendEvent(logTag, "Action Item", "Google Play", (long) 0);
 
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//                        try {
-//                            intent.setData(Uri.parse("market://search?q=" + title));
-//                            v.getContext().startActivity(intent);
-//                        } catch (ActivityNotFoundException e) {
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                        try {
+                            intent.setData(Uri.parse("market://search?q=" + title));
+                            v.getContext().startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
                             intent.setData(Uri.parse("http://play.google.com/store/search?q="
                                     + title));
                             v.getContext().startActivity(intent);
                         }
-                        EasyTracker.getTracker()
-                                .trackEvent(logTag, "Click", "Google Play", (long) 0);
                     }
                 });
             } else {
