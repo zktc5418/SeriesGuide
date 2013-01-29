@@ -3,17 +3,25 @@
 
     <string name="app_name">SeriesGuide</string>
     <string name="package_name">com.battlelancer.seriesguide</string>
-    <string name="helptranslate">Help translate SeriesGuide</string>
     <string name="googleplay">Google Play</string>
     <string name="amazon">Amazon</string>
     <string name="imdb">IMDb</string>
     <string name="tvdb">TVDb</string>
-    <string name="trakt">trakt.tv</string>
+    <string name="trakt">trakt</string>
+    <string name="powered_by_tmdb">powered by themoviedb.org</string>
     <string name="ontrakt">on trakt</string>
     <string name="getglue">GetGlue</string>
     <string name="notraktrating">--%</string>
     <string name="gobreak">Go break things</string>
-    <string name="betamessage">The next one\n\nSwipe anywhere to show the new menu drawer for quick navigation, reorganized menus, pages (lists have finally there own page).\n\nSpecify how far in advance to notify about new episodes, does not notify you twice about the same stuff.\n\nBeam a show from its overview page to another Android.\n\n<a href="http://git.io/sgbetachanges#changelog">Detailed change log</a></string>
+    <string name="betamessage">Wizards and Tweaks\n\nConnect with trakt wizard.\n\nLittle helper messages here and there.\n\nA bunch of crash fixes.\n\n<a href="http://git.io/sgbetachanges#changelog">Detailed change log</a></string>
+
+    <!-- Settings -->
+    <string name="pref_translate">Translate SeriesGuide</string>
+    <string name="pref_translatesummary">Translate or proofread on crowdin</string>
+    <string name="pref_community">Google+ community</string>
+    <string name="pref_communitysummary">Share ideas, discuss changes or report problems</string>
+    <string name="pref_suggest_features">Suggest improvements</string>
+    <string name="pref_suggest_featuressummary">Suggest and vote on future improvements</string>
 
     <string-array name="shsortingData">
         <item>alphabetic</item>

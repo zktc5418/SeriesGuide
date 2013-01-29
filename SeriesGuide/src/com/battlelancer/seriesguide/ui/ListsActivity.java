@@ -8,6 +8,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.battlelancer.seriesguide.adapters.ListsPagerAdapter;
+import com.battlelancer.seriesguide.interfaces.OnListsChangedListener;
 import com.battlelancer.seriesguide.ui.dialogs.AddListDialogFragment;
 import com.battlelancer.seriesguide.ui.dialogs.ListManageDialogFragment;
 import com.battlelancer.seriesguide.util.MenuOnPageChangeListener;
@@ -21,19 +22,12 @@ import com.viewpagerindicator.TabPageIndicator.OnTabReselectedListener;
  * Hosts a view pager to display and manage lists of shows, seasons and
  * episodes.
  */
-public class ListsActivity extends BaseTopActivity implements OnListsChangedListener {
+public class ListsActivity extends BaseTopShowsActivity implements OnListsChangedListener {
 
-    public static final String TAG = "ListsActivity";
+    public static final String TAG = "Lists";
     private ListsPagerAdapter mListsAdapter;
     private ViewPager mPager;
     private TabPageIndicator mIndicator;
-
-    /**
-     * Google Analytics helper method for easy event tracking.
-     */
-    public void fireTrackerEvent(String label) {
-        EasyTracker.getTracker().trackEvent(TAG, "Click", label, (long) 0);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +58,18 @@ public class ListsActivity extends BaseTopActivity implements OnListsChangedList
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance().activityStart(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EasyTracker.getInstance().activityStop(this);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getSupportMenuInflater().inflate(R.menu.lists_menu, menu);
         return super.onCreateOptionsMenu(menu);
@@ -73,8 +79,8 @@ public class ListsActivity extends BaseTopActivity implements OnListsChangedList
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.menu_list_add) {
-            AddListDialogFragment.showAddListDialog(getSupportFragmentManager());
             fireTrackerEvent("Add list");
+            AddListDialogFragment.showAddListDialog(getSupportFragmentManager());
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -87,5 +93,9 @@ public class ListsActivity extends BaseTopActivity implements OnListsChangedList
         mListsAdapter.onListsChanged();
         // update indicator and view pager
         mIndicator.notifyDataSetChanged();
+    }
+
+    protected void fireTrackerEvent(String label) {
+        EasyTracker.getTracker().sendEvent(TAG, "Action Item", label, (long) 0);
     }
 }

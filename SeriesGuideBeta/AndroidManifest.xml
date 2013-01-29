@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.battlelancer.seriesguide.beta"
     android:installLocation="auto"
-    android:versionCode="197"
-    android:versionName="3beta1" >
+    android:versionCode="199"
+    android:versionName="3beta3" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.NFC" />
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -168,6 +167,11 @@
                 android:value="com.battlelancer.seriesguide.ui.SearchActivity" />
         </activity>
         <activity android:name="com.battlelancer.seriesguide.ui.MoviesActivity" >
+        </activity>
+        <activity android:name="com.battlelancer.seriesguide.ui.ConnectTraktActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.battlelancer.seriesguide.ui.ShowsActivity" />
         </activity>
 
         <!-- Notification service -->

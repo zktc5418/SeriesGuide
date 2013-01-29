@@ -19,6 +19,7 @@ package com.battlelancer.seriesguide.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -750,7 +751,7 @@ public class Utils {
      * Tracks an exception using the Google Analytics {@link EasyTracker}.
      */
     public static void trackException(Context context, String tag, Exception e) {
-        EasyTracker.getTracker().trackException(tag + ": " + e.getMessage(), false);
+        EasyTracker.getTracker().sendException(tag + ": " + e.getMessage(), false);
     }
 
     /**
@@ -797,7 +798,7 @@ public class Utils {
             imdbButton.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     EasyTracker.getTracker()
-                            .trackEvent(logTag, "Click", "Show IMDb page", (long) 0);
+                            .sendEvent(logTag, "Action Item", "IMDb", (long) 0);
 
                     if (!TextUtils.isEmpty(imdbId)) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("imdb:///title/"
@@ -834,6 +835,9 @@ public class Utils {
                 playButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        EasyTracker.getTracker()
+                                .sendEvent(logTag, "Action Item", "Google Play", (long) 0);
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 //                        try {
@@ -843,7 +847,7 @@ public class Utils {
                             intent.setData(Uri.parse("http://play.google.com/store/search?q="
                                     + title));
                             v.getContext().startActivity(intent);
-//                        }
+                        }
                         EasyTracker.getTracker()
                                 .trackEvent(logTag, "Click", "Google Play", (long) 0);
                     }
@@ -868,14 +872,14 @@ public class Utils {
                 amazonButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        EasyTracker.getTracker()
+                                .sendEvent(logTag, "Action Item", "Amazon", (long) 0);
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri
                                 .parse("http://www.amazon.com/gp/search?ie=UTF8&keywords=" + title));
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                         v.getContext().startActivity(intent);
-
-                        EasyTracker.getTracker()
-                                .trackEvent(logTag, "Click", "Amazon", (long) 0);
                     }
                 });
             } else {

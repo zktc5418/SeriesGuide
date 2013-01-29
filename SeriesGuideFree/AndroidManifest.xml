@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.NFC" />
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -187,6 +186,11 @@
                 android:value="com.battlelancer.seriesguide.ui.ShowsActivity" />
         </activity>
 		<activity android:name="com.battlelancer.seriesguide.ui.MoviesActivity" >
+        </activity>
+        <activity android:name="com.battlelancer.seriesguide.ui.ConnectTraktActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.battlelancer.seriesguide.ui.ShowsActivity" />
         </activity>
 
         <!-- Notification service -->

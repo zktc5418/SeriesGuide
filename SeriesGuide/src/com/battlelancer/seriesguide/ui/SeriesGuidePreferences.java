@@ -159,16 +159,18 @@ public class SeriesGuidePreferences extends SherlockPreferenceActivity implement
 
     public static final String HELP_URL = "http://seriesgui.de/help";
 
-    private static final String TAG = "SeriesGuidePreferences";
+    private static final String TAG = "Settings";
 
     private static final String KEY_ABOUT = "aboutPref";
 
     public static final String KEY_SELECTED_PAGE = "com.battlelancer.seriesguide.selectedpage";
 
+    public static final String KEY_TMDB_BASE_URL = "com.battlelancer.seriesguide.tmdb.baseurl";
+
     public static int THEME = R.style.SeriesGuideTheme;
 
-    public static void fireTrackerEvent(String label) {
-        EasyTracker.getTracker().trackEvent(TAG, "Click", label, (long) 0);
+    private static void fireTrackerEvent(String label) {
+        EasyTracker.getTracker().sendEvent(TAG, "Click", label, (long) 0);
     }
 
     @SuppressWarnings("deprecation")
@@ -234,10 +236,10 @@ public class SeriesGuidePreferences extends SherlockPreferenceActivity implement
 
             public boolean onPreferenceClick(Preference preference) {
                 if (((CheckBoxPreference) preference).isChecked()) {
-                    EasyTracker.getTracker().trackEvent(TAG, "OnlyFutureEpisodes", "Enable",
+                    EasyTracker.getTracker().sendEvent(TAG, "OnlyFutureEpisodes", "Enable",
                             (long) 0);
                 } else {
-                    EasyTracker.getTracker().trackEvent(TAG, "OnlyFutureEpisodes", "Disable",
+                    EasyTracker.getTracker().sendEvent(TAG, "OnlyFutureEpisodes", "Disable",
                             (long) 0);
                 }
                 return false;
@@ -249,10 +251,10 @@ public class SeriesGuidePreferences extends SherlockPreferenceActivity implement
 
             public boolean onPreferenceClick(Preference preference) {
                 if (((CheckBoxPreference) preference).isChecked()) {
-                    EasyTracker.getTracker().trackEvent(TAG, "OnlySeasonEpisodes", "Enable",
+                    EasyTracker.getTracker().sendEvent(TAG, "OnlySeasonEpisodes", "Enable",
                             (long) 0);
                 } else {
-                    EasyTracker.getTracker().trackEvent(TAG, "OnlySeasonEpisodes", "Disable",
+                    EasyTracker.getTracker().sendEvent(TAG, "OnlySeasonEpisodes", "Disable",
                             (long) 0);
                 }
                 return false;
@@ -267,10 +269,10 @@ public class SeriesGuidePreferences extends SherlockPreferenceActivity implement
                 public boolean onPreferenceClick(Preference preference) {
                     boolean isChecked = ((CheckBoxPreference) preference).isChecked();
                     if (isChecked) {
-                        EasyTracker.getTracker().trackEvent(TAG, "Notifications", "Enable",
+                        EasyTracker.getTracker().sendEvent(TAG, "Notifications", "Enable",
                                 (long) 0);
                     } else {
-                        EasyTracker.getTracker().trackEvent(TAG, "Notifications", "Disable",
+                        EasyTracker.getTracker().sendEvent(TAG, "Notifications", "Disable",
                                 (long) 0);
                     }
 

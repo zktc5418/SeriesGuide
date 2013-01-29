@@ -42,6 +42,7 @@ import com.battlelancer.seriesguide.loaders.TmdbMoviesLoader;
 import com.battlelancer.seriesguide.ui.dialogs.MovieCheckInDialogFragment;
 import com.battlelancer.seriesguide.util.ServiceUtils;
 import com.battlelancer.seriesguide.util.Utils;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.jakewharton.apibuilder.ApiException;
 import com.uwetrottmann.seriesguide.R;
 import com.uwetrottmann.tmdb.ServiceManager;
@@ -59,7 +60,7 @@ public class MovieSearchFragment extends SherlockFragment implements OnEditorAct
 
     private static final String SEARCH_QUERY_KEY = "search_query";
     private static final int LOADER_ID = R.layout.movies_fragment;
-    protected static final String TAG = "MovieSearchFragment";
+    protected static final String TAG = "Movies Search";
 
     private EditText mSearchBox;
     private MoviesAdapter mAdapter;
@@ -72,6 +73,7 @@ public class MovieSearchFragment extends SherlockFragment implements OnEditorAct
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
 
         // setup search box
         mSearchBox = (EditText) getView().findViewById(R.id.editTextCheckinSearch);
@@ -93,11 +95,21 @@ public class MovieSearchFragment extends SherlockFragment implements OnEditorAct
         GridView list = (GridView) getView().findViewById(R.id.gridViewMovies);
         list.setAdapter(mAdapter);
         list.setOnItemClickListener(this);
+        list.setEmptyView(getView().findViewById(R.id.empty));
+
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getTracker().sendView(TAG);
     }
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+        if (actionId == EditorInfo.IME_ACTION_SEARCH
+                || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
             onSearch();
             return true;
         }
@@ -117,35 +129,36 @@ public class MovieSearchFragment extends SherlockFragment implements OnEditorAct
         if (args != null) {
             query = args.getString(SEARCH_QUERY_KEY);
         }
+        getSherlockActivity().setSupportProgressBarIndeterminateVisibility(true);
         return new TmdbMoviesLoader(getActivity(), query);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> data) {
         mAdapter.setData(data);
+        getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
     }
 
     @Override
     public void onLoaderReset(Loader<List<Movie>> loader) {
         mAdapter.setData(null);
+        getSherlockActivity().setSupportProgressBarIndeterminateVisibility(false);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Movie movie = mAdapter.getItem(position);
 
-        new AsyncTask<Integer, Void, String>() {
-
-            private Movie mMovie;
+        new AsyncTask<Integer, Void, Movie>() {
 
             @Override
-            protected String doInBackground(Integer... params) {
+            protected Movie doInBackground(Integer... params) {
                 ServiceManager manager = ServiceUtils.getTmdbServiceManager(getActivity());
 
                 try {
-                    mMovie = manager.moviesService().summary(params[0]).fire();
-                    if (mMovie != null) {
-                        return mMovie.imdb_id;
+                    Movie movie = manager.moviesService().summary(params[0]).fire();
+                    if (movie != null) {
+                        return movie;
                     }
                 } catch (TmdbException e) {
                     Utils.trackException(getActivity(), TAG, e);
@@ -157,11 +170,11 @@ public class MovieSearchFragment extends SherlockFragment implements OnEditorAct
                 return null;
             }
 
-            protected void onPostExecute(String result) {
-                if (!TextUtils.isEmpty(result)) {
+            protected void onPostExecute(Movie movie) {
+                if (movie != null && !TextUtils.isEmpty(movie.imdb_id) && isAdded()) {
                     // display a check-in dialog
                     MovieCheckInDialogFragment f = MovieCheckInDialogFragment.newInstance(
-                            result, mMovie.title);
+                            movie.imdb_id, movie.title);
                     f.show(getFragmentManager(), "checkin-dialog");
                 }
             };

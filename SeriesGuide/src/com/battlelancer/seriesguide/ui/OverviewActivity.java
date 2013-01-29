@@ -43,7 +43,6 @@ import com.uwetrottmann.seriesguide.R;
 public class OverviewActivity extends BaseActivity {
 
     private Fragment mFragment;
-//    private NfcAdapter mNfcAdapter;
     private int mShowId;
 
     @Override
@@ -72,13 +71,13 @@ public class OverviewActivity extends BaseActivity {
             ft.replace(R.id.fragment_overview, mFragment).commit();
         }
 
-//        if (AndroidUtils.isICSOrHigher()) {
-//            // register for Android Beam
-//            mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-//            if (mNfcAdapter != null) {
-//                mNfcAdapter.setNdefPushMessageCallback(this, this);
-//            }
-//        }
+        // if (AndroidUtils.isICSOrHigher()) {
+        // // register for Android Beam
+        // mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        // if (mNfcAdapter != null) {
+        // mNfcAdapter.setNdefPushMessageCallback(this, this);
+        // }
+        // }
 
         // try to update this show
         onUpdate();
@@ -147,34 +146,35 @@ public class OverviewActivity extends BaseActivity {
         return true;
     }
 
-//    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-//    @Override
-//    public NdefMessage createNdefMessage(NfcEvent event) {
-//        final Series show = DBUtils.getShow(this, String.valueOf(mShowId));
-//        // send id, also title and overview (both can be empty)
-//        NdefMessage msg = new NdefMessage(new NdefRecord[] {
-//                createMimeRecord(
-//                        "application/com.battlelancer.seriesguide.beam", String.valueOf(mShowId)
-//                                .getBytes()),
-//                createMimeRecord("application/com.battlelancer.seriesguide.beam", show.getTitle()
-//                        .getBytes()),
-//                createMimeRecord("application/com.battlelancer.seriesguide.beam", show
-//                        .getOverview()
-//                        .getBytes())
-//        });
-//        return msg;
-//    }
-
-//    /**
-//     * Creates a custom MIME type encapsulated in an NDEF record
-//     * 
-//     * @param mimeType
-//     */
-//    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-//    public NdefRecord createMimeRecord(String mimeType, byte[] payload) {
-//        byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
-//        NdefRecord mimeRecord = new NdefRecord(
-//                NdefRecord.TNF_MIME_MEDIA, mimeBytes, new byte[0], payload);
-//        return mimeRecord;
-//    }
+    // @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    // @Override
+    // public NdefMessage createNdefMessage(NfcEvent event) {
+    // final Series show = DBUtils.getShow(this, String.valueOf(mShowId));
+    // // send id, also title and overview (both can be empty)
+    // NdefMessage msg = new NdefMessage(new NdefRecord[] {
+    // createMimeRecord(
+    // "application/com.battlelancer.seriesguide.beam", String.valueOf(mShowId)
+    // .getBytes()),
+    // createMimeRecord("application/com.battlelancer.seriesguide.beam",
+    // show.getTitle()
+    // .getBytes()),
+    // createMimeRecord("application/com.battlelancer.seriesguide.beam", show
+    // .getOverview()
+    // .getBytes())
+    // });
+    // return msg;
+    // }
+    //
+    // /**
+    // * Creates a custom MIME type encapsulated in an NDEF record
+    // *
+    // * @param mimeType
+    // */
+    // @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    // public NdefRecord createMimeRecord(String mimeType, byte[] payload) {
+    // byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
+    // NdefRecord mimeRecord = new NdefRecord(
+    // NdefRecord.TNF_MIME_MEDIA, mimeBytes, new byte[0], payload);
+    // return mimeRecord;
+    // }
 }
