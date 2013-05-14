@@ -43,7 +43,6 @@ import com.battlelancer.seriesguide.items.SearchResult;
 import com.battlelancer.seriesguide.loaders.GenericSimpleLoader;
 import com.battlelancer.seriesguide.provider.SeriesContract.Episodes;
 import com.battlelancer.seriesguide.ui.dialogs.AddDialogFragment;
-import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.ServiceUtils;
 import com.battlelancer.seriesguide.util.Utils;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -56,6 +55,7 @@ import com.jakewharton.trakt.entities.TvShow;
 import com.jakewharton.trakt.entities.TvShowEpisode;
 import com.jakewharton.trakt.entities.UserProfile;
 import com.jakewharton.trakt.enumerations.ActivityType;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.seriesguide.R;
 
@@ -253,15 +253,12 @@ public class TraktFriendsFragment extends ListFragment implements
     }
 
     private static class TraktFriendsAdapter extends ArrayAdapter<UserProfile> {
-        private final ImageDownloader mImageDownloader;
-
         private final LayoutInflater mInflater;
 
         private final SharedPreferences mPrefs;
 
         public TraktFriendsAdapter(Context context) {
             super(context, R.layout.friend);
-            mImageDownloader = ImageDownloader.getInstance(context);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
             mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
@@ -300,7 +297,7 @@ public class TraktFriendsFragment extends ListFragment implements
             UserProfile friend = getItem(position);
 
             holder.name.setText(friend.username);
-            mImageDownloader.download(friend.avatar, holder.avatar);
+            Picasso.with(getContext()).load(friend.avatar).into(holder.avatar);
 
             holder.timestamp.setTextColor(Color.GRAY);
 

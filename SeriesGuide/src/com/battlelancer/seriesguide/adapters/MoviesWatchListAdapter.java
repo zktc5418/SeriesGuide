@@ -29,8 +29,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.jakewharton.trakt.entities.Movie;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.seriesguide.R;
 
 import java.util.List;
@@ -44,14 +44,11 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
 
     private LayoutInflater mInflater;
 
-    private ImageDownloader mImageDownloader;
-
     private String mSizeSpec;
 
     public MoviesWatchListAdapter(Context context) {
         super(context, LAYOUT);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mImageDownloader = ImageDownloader.getInstance(context);
 
         // figure out which size of posters to load based on screen density and
         // size
@@ -97,7 +94,7 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
         if (movie.images != null && !TextUtils.isEmpty(movie.images.poster)) {
             String posterPath = movie.images.poster.substring(0, movie.images.poster.length() - 4)
                     + mSizeSpec;
-            mImageDownloader.download(posterPath, holder.poster, true);
+            Picasso.with(getContext()).load(posterPath).into(holder.poster);
         }
 
         return convertView;

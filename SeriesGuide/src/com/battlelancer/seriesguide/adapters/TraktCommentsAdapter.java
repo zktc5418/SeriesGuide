@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.jakewharton.trakt.entities.Comment;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.seriesguide.R;
 
 import java.util.List;
@@ -21,13 +22,11 @@ import java.util.List;
  * ViewHolder pattern and downloads avatars using the {@link ImageDownloader}.
  */
 public class TraktCommentsAdapter extends ArrayAdapter<Comment> {
-    private final ImageDownloader mImageDownloader;
 
     private final LayoutInflater mInflater;
 
     public TraktCommentsAdapter(Context context) {
         super(context, R.layout.shout);
-        mImageDownloader = ImageDownloader.getInstance(context);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -64,7 +63,7 @@ public class TraktCommentsAdapter extends ArrayAdapter<Comment> {
         final Comment shout = getItem(position);
 
         holder.name.setText(shout.user.username);
-        mImageDownloader.download(shout.user.avatar, holder.avatar, false);
+        Picasso.with(getContext()).load(shout.user.avatar).into(holder.avatar);
 
         if (shout.spoiler) {
             holder.shout.setText(R.string.isspoiler);

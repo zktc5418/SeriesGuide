@@ -32,8 +32,8 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.battlelancer.seriesguide.items.SearchResult;
 import com.battlelancer.seriesguide.ui.dialogs.AddDialogFragment;
-import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.TaskManager;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.seriesguide.R;
 
@@ -105,8 +105,6 @@ public class AddFragment extends SherlockFragment {
 
         private int mLayout;
 
-        private ImageDownloader mImageDownloader;
-
         private OnClickListener mDetailsButtonListener;
 
         public AddAdapter(Context context, int layout, List<SearchResult> objects,
@@ -115,7 +113,6 @@ public class AddFragment extends SherlockFragment {
             mLayoutInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             mLayout = layout;
-            mImageDownloader = ImageDownloader.getInstance(context);
             mDetailsButtonListener = detailsButtonListener;
         }
 
@@ -160,7 +157,7 @@ public class AddFragment extends SherlockFragment {
             viewHolder.description.setText(item.overview);
             if (item.poster != null) {
                 viewHolder.poster.setVisibility(View.VISIBLE);
-                mImageDownloader.download(item.poster, viewHolder.poster, false);
+                Picasso.with(getContext()).load(item.poster).into(viewHolder.poster);
             } else {
                 viewHolder.poster.setVisibility(View.GONE);
             }

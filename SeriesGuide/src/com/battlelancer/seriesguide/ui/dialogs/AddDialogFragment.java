@@ -33,8 +33,8 @@ import android.widget.TextView;
 
 import com.battlelancer.seriesguide.items.SearchResult;
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
-import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.seriesguide.R;
 
 /**
@@ -118,7 +118,7 @@ public class AddDialogFragment extends DialogFragment {
             if (show.poster != null) {
                 ImageView posterView = (ImageView) layout.findViewById(R.id.poster);
                 posterView.setVisibility(View.VISIBLE);
-                ImageDownloader.getInstance(getActivity()).download(show.poster, posterView, false);
+                Picasso.with(getActivity()).load(show.poster).into(posterView);
             }
         }
 

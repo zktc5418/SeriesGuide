@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
-import com.battlelancer.seriesguide.util.ImageDownloader;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.seriesguide.R;
 import com.uwetrottmann.tmdb.entities.Movie;
 
@@ -45,14 +45,11 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
 
     private LayoutInflater mInflater;
 
-    private ImageDownloader mImageDownloader;
-
     private String mBaseUrl;
 
     public MoviesAdapter(Context context) {
         super(context, LAYOUT);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mImageDownloader = ImageDownloader.getInstance(context);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         mBaseUrl = prefs.getString(SeriesGuidePreferences.KEY_TMDB_BASE_URL,
@@ -91,7 +88,7 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
         }
         if (!TextUtils.isEmpty(movie.poster_path)) {
             String posterPath = mBaseUrl + movie.poster_path;
-            mImageDownloader.download(posterPath, holder.poster, false);
+            Picasso.with(getContext()).load(posterPath).into(holder.poster);
         }
 
         return convertView;

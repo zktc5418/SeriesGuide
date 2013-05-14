@@ -43,8 +43,8 @@ import com.actionbarsherlock.view.MenuItem;
 import com.battlelancer.seriesguide.loaders.TmdbMovieDetailsLoader;
 import com.battlelancer.seriesguide.loaders.TmdbMovieDetailsLoader.MovieDetails;
 import com.battlelancer.seriesguide.ui.dialogs.MovieCheckInDialogFragment;
-import com.battlelancer.seriesguide.util.ImageDownloader;
 import com.battlelancer.seriesguide.util.Utils;
+import com.squareup.picasso.Picasso;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.seriesguide.R;
 import com.uwetrottmann.tmdb.entities.Movie;
@@ -72,7 +72,6 @@ public class MovieDetailsFragment extends SherlockFragment implements
 
     private static final String TAG = "Movie Details";
     private static final int LOADER_ID = R.layout.movie_details_fragment;
-    private ImageDownloader mImageDownloader;
     private String mBaseUrl;
     private View mProgressBar;
     private MovieDetails mMovieDetails;
@@ -95,8 +94,6 @@ public class MovieDetailsFragment extends SherlockFragment implements
             getSherlockActivity().getSupportFragmentManager().popBackStack();
             return;
         }
-
-        mImageDownloader = ImageDownloader.getInstance(getActivity());
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mBaseUrl = prefs.getString(SeriesGuidePreferences.KEY_TMDB_BASE_URL,
@@ -212,7 +209,7 @@ public class MovieDetailsFragment extends SherlockFragment implements
                 }
 
                 String posterPath = mBaseUrl + movie.poster_path;
-                mImageDownloader.download(posterPath, background, false);
+                Picasso.with(getActivity()).load(posterPath).into(background);
             }
 
             View checkinButton = getView().findViewById(R.id.buttonMovieCheckIn);
