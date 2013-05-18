@@ -11,7 +11,7 @@
         android:layout_height="@dimen/movie_item_height"
         tools:ignore="UselessParent" >
 
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/imageViewMoviePoster"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movie_item_poster_height"

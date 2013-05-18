@@ -19,8 +19,14 @@ package com.battlelancer.seriesguide;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
+import android.support.v4.util.LruCache;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageCache;
+import com.android.volley.toolbox.Volley;
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
 import com.battlelancer.seriesguide.util.ImageProvider;
 import com.battlelancer.seriesguide.util.Utils;
@@ -36,11 +42,21 @@ import com.uwetrottmann.seriesguide.R;
  */
 public class SeriesGuideApplication extends Application {
 
+    private static SeriesGuideApplication sInstance;
+
+    public static SeriesGuideApplication get() {
+        return sInstance;
+    }
+
     public static String CONTENT_AUTHORITY;
+
+    private final LruCache<String, Bitmap> mImageCache = new LruCache<String, Bitmap>(20);
+    private ImageLoader mImageLoader;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
 
         // set provider authority
         CONTENT_AUTHORITY = getPackageName() + ".provider";
@@ -55,6 +71,21 @@ public class SeriesGuideApplication extends Application {
                 SeriesGuidePreferences.KEY_THEME, "0");
         Utils.updateTheme(theme);
 
+        RequestQueue queue = Volley.newRequestQueue(this);
+        ImageCache imageCache = new ImageCache() {
+            @Override
+            public Bitmap getBitmap(String key) {
+                return mImageCache.get(key);
+            }
+
+            @Override
+            public void putBitmap(String key, Bitmap value) {
+                mImageCache.put(key, value);
+            }
+        };
+
+        mImageLoader = new ImageLoader(queue, imageCache);
+
         // set a context for Google Analytics
         EasyTracker.getInstance().setContext(getApplicationContext());
     }
@@ -66,6 +97,10 @@ public class SeriesGuideApplication extends Application {
             // onTrimMemory (used directly in our ImageProvider)
             ImageProvider.getInstance(this).clearCache();
         }
+    }
+
+    public ImageLoader getImageLoader() {
+        return mImageLoader;
     }
 
 }

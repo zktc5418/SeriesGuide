@@ -26,10 +26,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.battlelancer.seriesguide.util.ImageDownloader;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.battlelancer.seriesguide.SeriesGuideApplication;
 import com.jakewharton.trakt.entities.Movie;
 import com.uwetrottmann.seriesguide.R;
 
@@ -44,14 +45,14 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
 
     private LayoutInflater mInflater;
 
-    private ImageDownloader mImageDownloader;
-
     private String mSizeSpec;
+
+    private ImageLoader mImageLoader;
 
     public MoviesWatchListAdapter(Context context) {
         super(context, LAYOUT);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mImageDownloader = ImageDownloader.getInstance(context);
+        mImageLoader = SeriesGuideApplication.get().getImageLoader();
 
         // figure out which size of posters to load based on screen density and
         // size
@@ -76,7 +77,7 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
             holder = new ViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.textViewMovieTitle);
             holder.date = (TextView) convertView.findViewById(R.id.textViewMovieDate);
-            holder.poster = (ImageView) convertView.findViewById(R.id.imageViewMoviePoster);
+            holder.poster = (NetworkImageView) convertView.findViewById(R.id.imageViewMoviePoster);
 
             convertView.setTag(holder);
         } else {
@@ -97,7 +98,7 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
         if (movie.images != null && !TextUtils.isEmpty(movie.images.poster)) {
             String posterPath = movie.images.poster.substring(0, movie.images.poster.length() - 4)
                     + mSizeSpec;
-            mImageDownloader.download(posterPath, holder.poster, true);
+            holder.poster.setImageUrl(posterPath, mImageLoader);
         }
 
         return convertView;
@@ -115,7 +116,7 @@ public class MoviesWatchListAdapter extends ArrayAdapter<Movie> {
     static class ViewHolder {
         TextView title;
         TextView date;
-        ImageView poster;
+        NetworkImageView poster;
     }
 
 }
