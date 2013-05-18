@@ -194,55 +194,18 @@ public class OverviewFragment extends SherlockFragment implements
         boolean isEpisodeVisible;
         if (mEpisodeCursor != null && mEpisodeCursor.moveToFirst()) {
             isEpisodeVisible = true;
-            boolean isCollected = mEpisodeCursor.getInt(EpisodeQuery.COLLECTED) == 1 ? true
-                    : false;
-            menu.findItem(R.id.menu_overview_flag_collected).setIcon(
-                    isCollected ? R.drawable.ic_collected : R.drawable.ic_action_collect);
         } else {
             isEpisodeVisible = false;
         }
-        menu.findItem(R.id.menu_overview_checkin).setEnabled(isEpisodeVisible && !mMultiPane);
-        menu.findItem(R.id.menu_overview_flag_watched).setEnabled(isEpisodeVisible && !mMultiPane);
-        menu.findItem(R.id.menu_overview_flag_collected)
-                .setEnabled(isEpisodeVisible && !mMultiPane);
-        menu.findItem(R.id.menu_overview_calendarevent).setEnabled(isEpisodeVisible && !mMultiPane);
+        menu.findItem(R.id.menu_overview_manage_lists).setEnabled(isEpisodeVisible);
         menu.findItem(R.id.menu_overview_share).setEnabled(isEpisodeVisible);
         menu.findItem(R.id.menu_overview_rate).setEnabled(isEpisodeVisible);
-        menu.findItem(R.id.menu_overview_manage_lists).setEnabled(isEpisodeVisible);
-
-        // hide some items on larger screens, we use inline buttons there
-        menu.findItem(R.id.menu_overview_checkin).setVisible(!mMultiPane);
-        menu.findItem(R.id.menu_overview_flag_watched).setVisible(!mMultiPane);
-        menu.findItem(R.id.menu_overview_flag_collected).setVisible(!mMultiPane);
-        menu.findItem(R.id.menu_overview_calendarevent).setVisible(!mMultiPane);
-
-        // move some items to the overflow menu on smaller screens
-        menu.findItem(R.id.menu_overview_rate).setShowAsAction(
-                mMultiPane ?
-                        MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT
-                        : MenuItem.SHOW_AS_ACTION_NEVER);
-        menu.findItem(R.id.menu_overview_manage_lists).setShowAsAction(
-                mMultiPane ?
-                        MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT
-                        : MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.menu_overview_checkin) {
-            onCheckIn();
-            return true;
-        } else if (itemId == R.id.menu_overview_flag_watched) {
-            onFlagWatched();
-            return true;
-        } else if (itemId == R.id.menu_overview_flag_collected) {
-            onToggleCollected();
-            return true;
-        } else if (itemId == R.id.menu_overview_calendarevent) {
-            onAddCalendarEvent();
-            return true;
-        } else if (itemId == R.id.menu_overview_rate) {
+        if (itemId == R.id.menu_overview_rate) {
             onRateOnTrakt();
             return true;
         } else if (itemId == R.id.menu_overview_share) {
@@ -530,7 +493,6 @@ public class OverviewFragment extends SherlockFragment implements
         final TextView episodeInfo = (TextView) getView().findViewById(R.id.episodeInfo);
         final View episodemeta = getView().findViewById(R.id.episode_meta_container);
         final View episodePrimaryContainer = getView().findViewById(R.id.episode_primary_container);
-        final View episodePrimaryClicker = getView().findViewById(R.id.episode_primary_click_dummy);
         final View buttons = getView().findViewById(R.id.buttonbar);
         final View ratings = getView().findViewById(R.id.ratingbar);
 
@@ -570,7 +532,7 @@ public class OverviewFragment extends SherlockFragment implements
             }
 
             // make title and image clickable
-            episodePrimaryClicker.setOnClickListener(new OnClickListener() {
+            episodePrimaryContainer.setOnClickListener(new OnClickListener() {
                 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
                 @Override
                 public void onClick(View view) {
@@ -582,56 +544,51 @@ public class OverviewFragment extends SherlockFragment implements
                             R.anim.blow_up_exit);
                 }
             });
-            episodePrimaryClicker.setFocusable(true);
+            episodePrimaryContainer.setFocusable(true);
 
-            if (mMultiPane) {
-                buttons.setVisibility(View.VISIBLE);
+            // Button bar
+            // check-in button
+            buttons.findViewById(R.id.checkinButton).setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onCheckIn();
+                }
+            });
 
-                // check-in button
-                buttons.findViewById(R.id.checkinButton).setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onCheckIn();
-                    }
-                });
+            // watched button
+            View watchedButton = buttons.findViewById(R.id.watchedButton);
+            watchedButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onFlagWatched();
+                }
+            });
+            CheatSheet.setup(watchedButton, R.string.mark_episode);
 
-                // watched button
-                View watchedButton = buttons.findViewById(R.id.watchedButton);
-                watchedButton.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onFlagWatched();
-                    }
-                });
-                CheatSheet.setup(watchedButton, R.string.mark_episode);
+            // collected button
+            boolean isCollected = episode.getInt(EpisodeQuery.COLLECTED) == 1;
+            ImageButton collectedButton = (ImageButton) buttons
+                    .findViewById(R.id.collectedButton);
+            collectedButton.setImageResource(isCollected ? R.drawable.ic_collected
+                    : R.drawable.ic_action_collect);
+            collectedButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onToggleCollected();
+                }
+            });
+            CheatSheet.setup(collectedButton, isCollected ? R.string.uncollect
+                    : R.string.collect);
 
-                // collected button
-                boolean isCollected = episode.getInt(EpisodeQuery.COLLECTED) == 1;
-                ImageButton collectedButton = (ImageButton) buttons
-                        .findViewById(R.id.collectedButton);
-                collectedButton.setImageResource(isCollected ? R.drawable.ic_collected
-                        : R.drawable.ic_action_collect);
-                collectedButton.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onToggleCollected();
-                    }
-                });
-                CheatSheet.setup(collectedButton, isCollected ? R.string.uncollect
-                        : R.string.collect);
-
-                // calendar button
-                View calendarButton = buttons.findViewById(R.id.calendarButton);
-                calendarButton.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onAddCalendarEvent();
-                    }
-                });
-                CheatSheet.setup(calendarButton);
-            } else {
-                buttons.setVisibility(View.GONE);
-            }
+            // calendar button
+            View calendarButton = buttons.findViewById(R.id.calendarButton);
+            calendarButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onAddCalendarEvent();
+                }
+            });
+            CheatSheet.setup(calendarButton);
 
             ratings.setOnClickListener(new OnClickListener() {
                 @Override
@@ -658,9 +615,9 @@ public class OverviewFragment extends SherlockFragment implements
             episodeInfo.setVisibility(View.GONE);
             episodemeta.setVisibility(View.GONE);
             episodePrimaryContainer.setBackgroundResource(R.color.background_dim);
-            episodePrimaryClicker.setOnClickListener(null);
-            episodePrimaryClicker.setClickable(false);
-            episodePrimaryClicker.setFocusable(false);
+            episodePrimaryContainer.setOnClickListener(null);
+            episodePrimaryContainer.setClickable(false);
+            episodePrimaryContainer.setFocusable(false);
             buttons.setVisibility(View.GONE);
             ratings.setOnClickListener(null);
             ratings.setClickable(false);
