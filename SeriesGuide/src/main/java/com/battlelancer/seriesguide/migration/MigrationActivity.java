@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.battlelancer.seriesguide.dataliberation.JsonExportTask;
-import com.battlelancer.seriesguide.dataliberation.JsonImportTask;
 import com.battlelancer.seriesguide.dataliberation.OnTaskFinishedListener;
 import com.battlelancer.seriesguide.provider.SeriesContract;
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
@@ -106,16 +105,10 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
         mButtonBackup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mIsX) {
-                    // backup shows
-                    mTask = new JsonExportTask(MigrationActivity.this, MigrationActivity.this,
-                            MigrationActivity.this,
-                            true, false);
-                } else {
-                    // import shows
-                    mTask = new JsonImportTask(MigrationActivity.this, MigrationActivity.this,
-                            false);
-                }
+                // backup shows
+                mTask = new JsonExportTask(MigrationActivity.this, MigrationActivity.this,
+                        MigrationActivity.this,
+                        true, false);
                 mTask.execute();
 
                 mProgressBar.setVisibility(View.VISIBLE);

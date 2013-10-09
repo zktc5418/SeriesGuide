@@ -18,7 +18,7 @@
 package com.battlelancer.seriesguide.dataliberation;
 
 /**
- * Used by {@link JsonExportTask} and {@link JsonImportTask} to report finishing
+ * Used by {@link JsonExportTask} to report finishing
  * their activity.
  */
 public interface OnTaskFinishedListener {

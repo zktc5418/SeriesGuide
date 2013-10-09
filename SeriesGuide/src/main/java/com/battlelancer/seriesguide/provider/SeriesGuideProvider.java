@@ -158,25 +158,8 @@ public class SeriesGuideProvider extends ContentProvider {
         final Context context = getContext();
         sUriMatcher = buildUriMatcher(context);
         mOpenHelper = new SeriesGuideDatabase(context);
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .registerOnSharedPreferenceChangeListener(mImportListener);
         return true;
     }
-
-    final OnSharedPreferenceChangeListener mImportListener = new OnSharedPreferenceChangeListener() {
-
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (key.equalsIgnoreCase(SeriesGuidePreferences.KEY_DATABASEIMPORTED)) {
-                if (sharedPreferences
-                        .getBoolean(SeriesGuidePreferences.KEY_DATABASEIMPORTED, false)) {
-                    mOpenHelper.close();
-                    sharedPreferences.edit()
-                            .putBoolean(SeriesGuidePreferences.KEY_DATABASEIMPORTED, false)
-                            .commit();
-                }
-            }
-        }
-    };
 
     @Override
     public String getType(Uri uri) {
@@ -589,7 +572,7 @@ public class SeriesGuideProvider extends ContentProvider {
     }
 
     /**
-     * {@link ScheduleContract} fields that are fully qualified with a specific
+     * Fields that are fully qualified with a specific
      * parent {@link Tables}. Used when needed to work around SQL ambiguity.
      */
     private interface Qualified {
