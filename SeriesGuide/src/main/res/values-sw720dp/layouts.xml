@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item name="shows_row" type="layout">@layout/shows_row_wide</item>
-    <item name="show_info" type="layout">@layout/show_info_regular</item>
-
-    <bool name="isLargeTablet">true</bool>
-
-</resources>
