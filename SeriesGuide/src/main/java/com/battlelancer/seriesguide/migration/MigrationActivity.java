@@ -2,6 +2,7 @@ package com.battlelancer.seriesguide.migration;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.battlelancer.seriesguide.dataliberation.JsonExportTask;
 import com.battlelancer.seriesguide.dataliberation.JsonImportTask;
 import com.battlelancer.seriesguide.dataliberation.OnTaskFinishedListener;
+import com.battlelancer.seriesguide.provider.SeriesContract;
 import com.battlelancer.seriesguide.sync.SgSyncAdapter;
 import com.battlelancer.seriesguide.ui.BaseActivity;
 import com.battlelancer.seriesguide.util.TaskManager;
@@ -41,6 +43,7 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
     private ProgressBar mProgressBar;
     private Button mButtonBackup;
     private Button mButtonLaunch;
+    private TextView mTextViewBackupInstructions;
     private TextView mTextViewLaunchInstructions;
     private AsyncTask<Void, Integer, Integer> mTask;
     private Intent mLaunchIntentForPackage;
@@ -99,8 +102,8 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
          * Change from backup to import tool whether we use X or any other version (internal beta,
          * free).
          */
-        ((TextView) findViewById(R.id.textViewMigrationBackupInstructions))
-                .setText(mIsX ? R.string.migration_backup : R.string.migration_import);
+        mTextViewBackupInstructions = (TextView) findViewById(R.id.textViewMigrationBackupInstructions);
+        mTextViewBackupInstructions.setText(mIsX ? R.string.migration_backup : R.string.migration_import);
 
         mButtonBackup = (Button) findViewById(R.id.buttonMigrationExport);
         mButtonBackup.setText(mIsX ? R.string.migration_action_backup
@@ -174,13 +177,19 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
         mButtonLaunch.setOnClickListener(isSeriesGuideInstalled ? mSeriesGuideLaunchListener : mSeriesGuideInstallListener);
 
         // decide whether to show next step
-        setLauncherVisibility(hasRecentBackup());
+        boolean hasShows = hasShows();
+        setBackupVisibility(hasShows);
+        setLauncherVisibility(!hasShows || hasRecentBackup());
     }
 
     private void preventUserInput(boolean isLockdown) {
         // toggle buttons enabled state
         mButtonBackup.setEnabled(!isLockdown);
         mButtonLaunch.setEnabled(!isLockdown);
+    }
+
+    private void setBackupVisibility(boolean isVisible) {
+        mButtonBackup.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
 
     private void setLauncherVisibility(boolean isVisible) {
@@ -203,6 +212,20 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
         mProgressBar.setVisibility(View.GONE);
         preventUserInput(false);
         validateLaunchStep();
+    }
+
+    private boolean hasShows() {
+        final Cursor shows = getContentResolver().query(SeriesContract.Shows.CONTENT_URI,
+                new String[]{SeriesContract.Shows._ID}, null, null, null);
+        if (shows != null) {
+            boolean hasShows = shows.getCount() > 0;
+            shows.close();
+            if (!hasShows) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean hasRecentBackup() {
