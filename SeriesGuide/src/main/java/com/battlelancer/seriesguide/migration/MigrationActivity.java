@@ -81,11 +81,6 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
 
         setupActionBar();
         setupViews();
-
-        // do not show the migration activity by force again
-        PreferenceManager.getDefaultSharedPreferences(this).edit()
-                .putBoolean(KEY_MIGRATION_OPT_OUT, true)
-                .commit();
     }
 
     private void setupActionBar() {
