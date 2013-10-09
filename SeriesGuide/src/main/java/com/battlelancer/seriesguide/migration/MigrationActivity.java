@@ -92,7 +92,7 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
     private void setupActionBar() {
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
     }
 
     private void setupViews() {
@@ -148,16 +148,6 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
         mTask = null;
 
         super.onDestroy();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemId = item.getItemId();
-        if (itemId == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void validateLaunchStep() {
