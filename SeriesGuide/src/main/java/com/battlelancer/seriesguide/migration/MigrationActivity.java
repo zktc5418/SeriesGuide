@@ -97,11 +97,8 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
          * free).
          */
         mTextViewBackupInstructions = (TextView) findViewById(R.id.textViewMigrationBackupInstructions);
-        mTextViewBackupInstructions.setText(mIsX ? R.string.migration_backup : R.string.migration_import);
 
         mButtonBackup = (Button) findViewById(R.id.buttonMigrationExport);
-        mButtonBackup.setText(mIsX ? R.string.migration_action_backup
-                : R.string.migration_action_import);
         mButtonBackup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
