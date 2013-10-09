@@ -23,39 +23,6 @@
             android:authorities="com.battlelancer.seriesguide.x.provider"
             android:exported="true" >
         </provider>
-
-        <!-- List widget configuration -->
-        <activity
-            android:name="com.battlelancer.seriesguide.appwidget.ListWidgetConfigure"
-            android:taskAffinity="com.battlelancer.seriesguide.x.widgetconfiguration" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-
-        <!-- Sync service -->
-        <service
-            android:name="com.battlelancer.seriesguide.sync.SgAuthenticationService"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/accountauth" />
-        </service>
-        <service
-            android:name="com.battlelancer.seriesguide.sync.SgSyncService"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.content.SyncAdapter"
-                android:resource="@xml/sync_seriesguide" />
-        </service>
     </application>
 
 </manifest>
