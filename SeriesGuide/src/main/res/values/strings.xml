@@ -18,7 +18,5 @@
     <string name="migration_action_install">Install SeriesGuide</string>
     <string name="migration_launch">Touch below and once in SeriesGuide touch Menu, then Migrate.</string>
     <string name="migration_action_launch">Open SeriesGuide, then Migrate</string>
-    <string name="migration_import">Touch below to import the backup created in SeriesGuide X.</string>
-    <string name="migration_action_import">Import and replace existing shows</string>
     <string name="action_migrate">Migrate from X</string>
 </resources>
