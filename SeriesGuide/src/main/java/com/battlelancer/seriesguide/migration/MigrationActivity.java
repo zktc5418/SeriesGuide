@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,14 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.battlelancer.seriesguide.dataliberation.JsonExportTask;
 import com.battlelancer.seriesguide.dataliberation.JsonImportTask;
 import com.battlelancer.seriesguide.dataliberation.OnTaskFinishedListener;
 import com.battlelancer.seriesguide.provider.SeriesContract;
-import com.battlelancer.seriesguide.sync.SgSyncAdapter;
-import com.battlelancer.seriesguide.ui.BaseActivity;
-import com.battlelancer.seriesguide.util.TaskManager;
+import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
 import com.battlelancer.seriesguide.util.Utils;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.seriesguide.R;
@@ -34,7 +31,7 @@ import java.io.File;
  * SeriesGuide X a backup assistant and install+launch the free version assistant is shown.
  * When using any other version an import assistant is shown.
  */
-public class MigrationActivity extends BaseActivity implements JsonExportTask.OnTaskProgressListener, OnTaskFinishedListener {
+public class MigrationActivity extends SherlockFragmentActivity implements JsonExportTask.OnTaskProgressListener, OnTaskFinishedListener {
 
     private static final String KEY_MIGRATION_OPT_OUT = "com.battlelancer.seriesguide.migration.optout";
     private static final String MARKETLINK_HTTP = "http://play.google.com/store/apps/details?id=com.battlelancer.seriesguide";
@@ -74,6 +71,8 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // set a theme based on user preference
+        setTheme(SeriesGuidePreferences.THEME);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_migration);
@@ -179,6 +178,7 @@ public class MigrationActivity extends BaseActivity implements JsonExportTask.On
     }
 
     private void setBackupVisibility(boolean isVisible) {
+        mTextViewBackupInstructions.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         mButtonBackup.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
 
