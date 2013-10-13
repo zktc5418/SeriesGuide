@@ -6,7 +6,7 @@
   <string name="backup_success">نجاح عملية النسخ الاحتياطي.</string>
   <string name="backup_failed">فشل النسخ الاحتياطي.</string>
   <string name="download_stable">حمّل دليل الحلقات</string>
-  <string name="migration_header">Migrate to the free version</string>
+  <string name="migration_header">التحويل إلى النسخة المجانية</string>
   <string name="migration_description">SeriesGuide X is now an unlock key for X features in the free version (\"X Life-Time Pass\"). Please migrate your shows to the free version of SeriesGuide. Keep X installed to unlock all features in the free version.</string>
   <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>
   <string name="migration_action_backup">Backup Shows</string>
@@ -14,5 +14,5 @@
   <string name="migration_action_install">Install SeriesGuide</string>
   <string name="migration_launch">Touch below and once in SeriesGuide touch Menu, then Migrate.</string>
   <string name="migration_action_launch">Open SeriesGuide, then Migrate</string>
-  <string name="action_migrate">Migrate from X</string>
+  <string name="action_migrate">ترحيل من النسخة المدفوعة</string>
 </resources>
