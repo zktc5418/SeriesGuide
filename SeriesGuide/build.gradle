@@ -13,7 +13,7 @@ android {
     productFlavors {
         x {
             packageName "com.battlelancer.seriesguide.x"
-            versionCode 163
+            versionCode 164
             versionName "x-pass"
         }
     }
