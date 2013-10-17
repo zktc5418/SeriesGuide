@@ -6,13 +6,15 @@
   <string name="backup_success">Varmuuskopiointi onnistui.</string>
   <string name="backup_failed">Varmuuskopiointi epäonnistui.</string>
   <string name="download_stable">Lataa SeriesGuide</string>
-  <string name="migration_header">Migrate to the free version</string>
-  <string name="migration_description">SeriesGuide X is now an unlock key for X features in the free version (\"X Life-Time Pass\"). Please migrate your shows to the free version of SeriesGuide. Keep X installed to unlock all features in the free version.</string>
-  <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>
-  <string name="migration_action_backup">Backup Shows</string>
-  <string name="migration_install">Touch below to install the free version of SeriesGuide.</string>
+  <string name="migration_header">Siirrä ilmaiseen versioon</string>
+  <string name="migration_description">SeriesGuide X on nyt avausavain X-ominaisuuksiin ilmaisessa versiossa (\"elinikäinen X-passi\"). Siirrä ohjelmasi SeriesGuiden ilmaiseen versioon. Pidä X asennettuna avataksesi kaikki ominaisuudet ilmaisessa versiossa.</string>
+  <string name="migration_backup">Kosketa alla luodaksesi tuore varmuuskopio ohjelmistasi.</string>
+  <string name="migration_action_backup">Varmuuskopioi ohjelmat</string>
+  <string name="migration_install">Kosketa alla asentaaksesi SeriesGuiden ilmainen versio.</string>
   <string name="migration_action_install">Asenna SeriesGuide</string>
-  <string name="migration_launch">Touch below and once in SeriesGuide touch Menu, then Migrate.</string>
-  <string name="migration_action_launch">Open SeriesGuide, then Migrate</string>
-  <string name="action_migrate">Migrate from X</string>
+  <string name="migration_launch">Kosketa alla, jonka jälkeen SeriesGuidessa kosketa Valikkoa ja sitten Siirrä.</string>
+  <string name="migration_action_launch">Avaa SeriesGuide, sitten Siirrä</string>
+  <string name="action_migrate">Siirrä X:stä</string>
+  <string name="migration_action_hide">Remove icon from app drawer</string>
+  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
 </resources>

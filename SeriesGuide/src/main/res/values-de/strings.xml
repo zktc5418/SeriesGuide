@@ -15,4 +15,6 @@
   <string name="migration_launch">Tippen Sie unten und nachdem SeriesGuide geöffnet ist tippen Sie auf Menü, dann Migration.</string>
   <string name="migration_action_launch">SeriesGuide Öffnen, dann Migration</string>
   <string name="action_migrate">Migration von X</string>
+  <string name="migration_action_hide">Symbol aus \'Alle Apps\' entfernen</string>
+  <string name="hide_confirmation">Symbol entfernt. Installieren Sie X neu, um es wiederherzustellen.</string>
 </resources>

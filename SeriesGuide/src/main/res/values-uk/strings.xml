@@ -15,4 +15,6 @@
   <string name="migration_launch">Торкніться нижче і у меню SeriesGuide, а потім мігруйте.</string>
   <string name="migration_action_launch">Відкрийте SeriesGuide, тоді мігруйте</string>
   <string name="action_migrate">Мігрувати з X</string>
+  <string name="migration_action_hide">Remove icon from app drawer</string>
+  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
 </resources>
