@@ -2,6 +2,7 @@ package com.battlelancer.seriesguide.migration;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -116,6 +118,13 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
 
         mTextViewLaunchInstructions = (TextView) findViewById(R.id.textViewMigrationLaunchInstructions);
         mButtonLaunch = (Button) findViewById(R.id.buttonMigrationLaunch);
+
+        findViewById(R.id.buttonMigrationHideLauncher).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideLauncherIcon();
+            }
+        });
     }
 
     @Override
@@ -228,5 +237,15 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
         }
 
         return false;
+    }
+
+    private void hideLauncherIcon() {
+        PackageManager p = getPackageManager();
+        if (p != null) {
+            p.setComponentEnabledSetting(getComponentName(),
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP);
+            Toast.makeText(this, R.string.hide_confirmation, Toast.LENGTH_LONG).show();
+        }
     }
 }

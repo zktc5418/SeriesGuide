@@ -63,5 +63,20 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/large_padding"
             android:text="@string/migration_action_backup" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/large_padding"
+            android:background="?attr/colorDivider" />
+
+        <Button
+            android:id="@+id/buttonMigrationHideLauncher"
+            style="@style/Widget.SeriesGuide.Button.Borderless.Small.Highlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/large_padding"
+            android:gravity="left|center_vertical"
+            android:text="@string/migration_action_hide" />
     </LinearLayout>
 </ScrollView>
