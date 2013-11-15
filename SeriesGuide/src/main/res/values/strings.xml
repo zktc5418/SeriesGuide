@@ -9,7 +9,6 @@
     <string name="backup_failed">Backup failed.</string>
 
     <!-- SeriesGuide X deprecation -->
-    <string name="download_stable">Download SeriesGuide</string>
     <string name="migration_header">Migrate to the free version</string>
     <string name="migration_description">SeriesGuide X is now an unlock key for X features in the free version (\"X Life-Time Pass\"). Please migrate your shows to the free version of SeriesGuide. Keep X installed to unlock all features in the free version.</string>
     <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>

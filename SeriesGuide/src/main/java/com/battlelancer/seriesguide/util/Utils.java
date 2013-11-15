@@ -17,16 +17,16 @@
 
 package com.battlelancer.seriesguide.util;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
+import com.battlelancer.seriesguide.Constants;
+import com.uwetrottmann.seriesguide.R;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.battlelancer.seriesguide.Constants;
-import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.uwetrottmann.seriesguide.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -93,25 +93,6 @@ public class Utils {
             return SGChannel.X;
         }
         return SGChannel.STABLE;
-    }
-
-    /**
-     * Sets the global app theme variable. Applied by all activities once they
-     * are created.
-     */
-    public static synchronized void updateTheme(String themeIndex) {
-        int theme = Integer.valueOf(themeIndex);
-        switch (theme) {
-            case 1:
-                SeriesGuidePreferences.THEME = R.style.ICSBaseTheme;
-                break;
-            case 2:
-                SeriesGuidePreferences.THEME = R.style.SeriesGuideThemeLight;
-                break;
-            default:
-                SeriesGuidePreferences.THEME = R.style.SeriesGuideTheme;
-                break;
-        }
     }
 
     /**
