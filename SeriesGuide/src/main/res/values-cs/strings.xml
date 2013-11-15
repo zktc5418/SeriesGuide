@@ -6,15 +6,15 @@
   <string name="backup_success">Zálohování bylo úspěšné.</string>
   <string name="backup_failed">Zálohování selhalo.</string>
   <string name="download_stable">Stáhnout SeriesGuide</string>
-  <string name="migration_header">Přesunutí na verzi zdarma</string>
-  <string name="migration_description">SeriesGuide X is now an unlock key for X features in the free version (\"X Life-Time Pass\"). Please migrate your shows to the free version of SeriesGuide. Keep X installed to unlock all features in the free version.</string>
-  <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>
+  <string name="migration_header">Přesunutí na bezplatnou verzi</string>
+  <string name="migration_description">SeriesGuide X nyní slouží k odemknutí Rozšířených funkcí v bezplatné verzi (\"doživotní verze X\"). Prosím přesuňte své seriály na bezplatnou verzi SeriesGuide. Nechte verzi X nainstalovanou pro odemknutí všech funkcí v bezplatné verzi.</string>
+  <string name="migration_backup">Stiskněte dole pro vytvoření nové zálohy vašich seriálů.</string>
   <string name="migration_action_backup">Zálohovat seriály</string>
-  <string name="migration_install">Touch below to install the free version of SeriesGuide.</string>
+  <string name="migration_install">Stiskněte dole pro instalování bezplatné verze SeriesGuide.</string>
   <string name="migration_action_install">Instalace SeriesGuide</string>
-  <string name="migration_launch">Touch below and once in SeriesGuide touch Menu, then Migrate.</string>
+  <string name="migration_launch">Stiskněte dole a poté v SeriesGuide na Menu a pak Přesunutí.</string>
   <string name="migration_action_launch">Otevřete SeriesGuide a potom Přesunutí</string>
-  <string name="action_migrate">Přesunutí z verze X</string>
-  <string name="migration_action_hide">Remove icon from app drawer</string>
-  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
+  <string name="action_migrate">Přesunutí z Rozšířené verze</string>
+  <string name="migration_action_hide">Odebrat ikonu ze seznamu aplikací</string>
+  <string name="hide_confirmation">Ikona odebrána. Reinstalujte Rozšířenou verzi pro její obnovení.</string>
 </resources>

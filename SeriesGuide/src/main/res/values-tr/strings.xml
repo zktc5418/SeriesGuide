@@ -14,7 +14,7 @@
   <string name="migration_action_install">SeriesGuide\'ı Yükle</string>
   <string name="migration_launch">Aşağıya dokunun ve SeriesGuide menüsündeyken geçiş yapın.</string>
   <string name="migration_action_launch">SeriesGuide\'ı açın ve geçiş yapın</string>
-  <string name="action_migrate">X ten geçiş yap</string>
-  <string name="migration_action_hide">Remove icon from app drawer</string>
-  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
+  <string name="action_migrate">X\'ten geçiş yap</string>
+  <string name="migration_action_hide">Uygulama dolabından simgeyi kaldırın</string>
+  <string name="hide_confirmation">Simge kaldırıldı.  Eski haline getirmek için X Pass\'ı yeniden yükleyin. </string>
 </resources>

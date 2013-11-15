@@ -15,6 +15,6 @@
   <string name="migration_launch">Druk hieronder en eenmaal in SeriesGuide, druk Menu en daarna Migreer.</string>
   <string name="migration_action_launch">Open SeriesGuide, dan Migreer</string>
   <string name="action_migrate">Migreer van X</string>
-  <string name="migration_action_hide">Remove icon from app drawer</string>
-  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
+  <string name="migration_action_hide">Verwijder het icoon uit de app drawer</string>
+  <string name="hide_confirmation">Icoon verwijderd. Installeer X pass opnieuw om het te herstellen.</string>
 </resources>

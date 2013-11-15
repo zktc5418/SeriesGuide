@@ -15,6 +15,6 @@
   <string name="migration_launch">Naciśnij poniżej i wybierz Migracja z menu SeriesGuide.</string>
   <string name="migration_action_launch">Otwórz SeriesGuide, a następnie przeprowadź migrację</string>
   <string name="action_migrate">Migracja z X</string>
-  <string name="migration_action_hide">Remove icon from app drawer</string>
-  <string name="hide_confirmation">Icon removed. Re-install X Pass to restore it.</string>
+  <string name="migration_action_hide">Usuń ikonę z szuflady aplikacji</string>
+  <string name="hide_confirmation">Ikona usunięta. Zainstaluj ponownie X Pass, aby ją przywrócić.</string>
 </resources>
