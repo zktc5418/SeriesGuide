@@ -7,7 +7,7 @@
   <string name="backup_failed">Falló la copia de seguridad.</string>
   <string name="download_stable">Descargar SeriesGuide</string>
   <string name="migration_header">Migrar a la versión gratuita</string>
-  <string name="migration_description">SeriesGuide X es ahora una clave de desbloqueo para las características X en la versión gratuita (\"X Life-Time Pass\"). Por favor, migra tus series a la versión gratuita de SeriesGuide.Manten X instalado para desbloquear todas las características en la versión gratuita.</string>
+  <string name="migration_description">SeriesGuide X es ahora una clave de desbloqueo para las características X en la versión gratuita (\"X Pass\"). Por favor, migra tus series a la versión gratuita de SeriesGuide.Manten X instalado para desbloquear todas las características en la versión gratuita.</string>
   <string name="migration_backup">Pulsa aquí abajo para crear una copia de seguridad de tus series.</string>
   <string name="migration_action_backup">Hacer una copia de seguridad de las series</string>
   <string name="migration_install">Pulsa aquí abajo para instalar la versión gratuita de SeriesGuide.</string>

@@ -7,7 +7,7 @@
   <string name="backup_failed">备份失败。</string>
   <string name="download_stable">下载“美剧指南”</string>
   <string name="migration_header">数据迁移到免费版</string>
-  <string name="migration_description">现在追剧助手X是免费版X Life-Time Pass的X特性解锁文件。请迁移您的剧集数据到追剧助手免费版。确保X已安装以解锁免费版中的X特性。</string>
+  <string name="migration_description">现在追剧助手X是免费版X Pass的X特性解锁文件。请迁移您的剧集数据到追剧助手免费版。确保X已安装以解锁免费版中的X特性。</string>
   <string name="migration_backup">触摸下面以创建新的剧集备份。</string>
   <string name="migration_action_backup">备份剧集</string>
   <string name="migration_install">触摸下面以安装免费版追剧助手。</string>

@@ -7,7 +7,7 @@
   <string name="backup_failed">Yedekleme başarısız oldu.</string>
   <string name="download_stable">SeriesGuide indir</string>
   <string name="migration_header">Ücretsiz sürüme geçin</string>
-  <string name="migration_description">SeriesGuide X artık ücretsiz sürümdeki X özelliklerini açmak için bir anahtar olarak kullanılıyor (\"X Life-Time Pass\"). Lütfen dizilerinizi SeriesGuide\'ın ücretsiz sürümüne taşıyın. Ücretsiz sürümdeki tüm özellikleri kullanabilmek için de X\'i kurulu bırakın.</string>
+  <string name="migration_description">SeriesGuide X artık ücretsiz sürümdeki X özelliklerini açmak için bir anahtar olarak kullanılıyor (\"X Pass\"). Lütfen dizilerinizi SeriesGuide\'ın ücretsiz sürümüne taşıyın. Ücretsiz sürümdeki tüm özellikleri kullanabilmek için de X\'i kurulu bırakın.</string>
   <string name="migration_backup">Dizilerinizin yeni bir yedeğini almak için aşağıya dokunun.</string>
   <string name="migration_action_backup">Dizileri Yedekle</string>
   <string name="migration_install">SeriesGuide\'ın ücretsiz sürümünü yüklemek için aşağıya dokunun.</string>

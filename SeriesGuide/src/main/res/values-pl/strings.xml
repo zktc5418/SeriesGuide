@@ -7,7 +7,7 @@
   <string name="backup_failed">Archiwizacja nieudana.</string>
   <string name="download_stable">Pobierz SeriesGuide</string>
   <string name="migration_header">Migracja do wersji darmowej</string>
-  <string name="migration_description">SeriesGuide X jest teraz kluczem odblokowującym funkcje X w wersji darmowej (\"X Life-Time Pass\"). Proszę dokonać migracji seriali do darmowej wersji SeriesGuide. Zachowaj zainstalowaną wersję X, aby odblokować wszystkie funkcje w wersji darmowej.</string>
+  <string name="migration_description">SeriesGuide X jest teraz kluczem odblokowującym funkcje X w wersji darmowej (\"X Pass\"). Proszę dokonać migracji seriali do darmowej wersji SeriesGuide. Zachowaj zainstalowaną wersję X, aby odblokować wszystkie funkcje w wersji darmowej.</string>
   <string name="migration_backup">Dotknij poniżej aby utworzyć aktualną kopię seriali.</string>
   <string name="migration_action_backup">Kopia zapasowa</string>
   <string name="migration_install">Dotknij poniżej, aby zainstalować bezpłatną wersję SeriesGuide.</string>
