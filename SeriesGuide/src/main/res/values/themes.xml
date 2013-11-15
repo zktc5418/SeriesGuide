@@ -44,18 +44,8 @@
         <item name="android:textAppearance">@style/TextAppearance</item>
 
         <!-- Drawables -->
-        <item name="drawableAddIcon">@drawable/ic_action_add</item>
-        <item name="drawableCalendarIcon">@drawable/ic_action_calendar</item>
         <item name="drawableDivider">@drawable/divider</item>
-        <item name="drawableStar">@drawable/ic_action_star_10</item>
-        <item name="drawableStar0">@drawable/ic_action_star_0</item>
-        <item name="drawableCancel">@drawable/ic_action_cancel</item>
-        <item name="drawableArrowUp">@drawable/ic_action_arrow_top</item>
         <item name="drawableDropdown">@drawable/ic_action_contextmenu</item>
-        <item name="drawableCheckin">@drawable/ic_action_checkin</item>
-        <item name="drawableWatch">@drawable/ic_action_tick</item>
-        <item name="drawableCollect">@drawable/ic_action_collect</item>
-        <item name="drawableFilter">@drawable/ic_action_filter</item>
     </style>
 
     <style name="SeriesGuideBaseTheme" parent="Theme.Sherlock">
