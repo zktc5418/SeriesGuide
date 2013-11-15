@@ -17,15 +17,12 @@
 
 package com.battlelancer.seriesguide.util;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
 import com.battlelancer.seriesguide.Constants;
 import com.uwetrottmann.seriesguide.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -93,22 +90,6 @@ public class Utils {
             return SGChannel.X;
         }
         return SGChannel.STABLE;
-    }
-
-    /**
-     * Tracks an exception using the Google Analytics {@link EasyTracker}.
-     */
-    public static void trackException(String tag, Exception e) {
-        EasyTracker.getTracker().sendException(tag + ": " + e.getMessage(), false);
-    }
-
-    /**
-     * Tracks an exception using the Google Analytics {@link EasyTracker} and
-     * the local log.
-     */
-    public static void trackExceptionAndLog(String tag, Exception e) {
-        trackException(tag, e);
-        Log.w(tag, e);
     }
 
     /**

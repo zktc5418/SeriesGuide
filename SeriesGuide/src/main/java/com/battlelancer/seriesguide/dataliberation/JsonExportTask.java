@@ -17,13 +17,9 @@
 
 package com.battlelancer.seriesguide.dataliberation;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.os.AsyncTask;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
+import com.google.myjson.Gson;
+import com.google.myjson.JsonIOException;
+import com.google.myjson.stream.JsonWriter;
 
 import com.battlelancer.seriesguide.dataliberation.model.Episode;
 import com.battlelancer.seriesguide.dataliberation.model.List;
@@ -37,14 +33,19 @@ import com.battlelancer.seriesguide.provider.SeriesContract.ListItems;
 import com.battlelancer.seriesguide.provider.SeriesContract.Seasons;
 import com.battlelancer.seriesguide.provider.SeriesContract.Shows;
 import com.battlelancer.seriesguide.settings.AdvancedSettings;
-import com.battlelancer.seriesguide.util.Utils;
 import com.battlelancer.thetvdbapi.TheTVDB.ShowStatus;
-import com.google.myjson.Gson;
-import com.google.myjson.JsonIOException;
-import com.google.myjson.stream.JsonWriter;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.androidutils.Lists;
 import com.uwetrottmann.seriesguide.R;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -151,11 +152,11 @@ public class JsonExportTask extends AsyncTask<Void, Integer, Integer> {
         } catch (JsonIOException e) {
             // Only catch IO exception as we want to know if exporting fails due
             // to a JsonSyntaxException
-            Utils.trackExceptionAndLog(TAG, e);
+            Log.w(TAG, e);
             return ERROR;
         } catch (IOException e) {
             // Backup failed
-            Utils.trackExceptionAndLog(TAG, e);
+            Log.w(TAG, e);
             return ERROR;
         } finally {
             shows.close();
@@ -189,10 +190,10 @@ public class JsonExportTask extends AsyncTask<Void, Integer, Integer> {
         } catch (JsonIOException e) {
             // Only catch IO exception as we want to know if exporting fails due
             // to a JsonSyntaxException
-            Utils.trackExceptionAndLog(TAG, e);
+            Log.w(TAG, e);
             return ERROR;
         } catch (IOException e) {
-            Utils.trackExceptionAndLog(TAG, e);
+            Log.w(TAG, e);
             return ERROR;
         } finally {
             lists.close();

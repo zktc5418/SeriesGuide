@@ -1,5 +1,15 @@
 package com.battlelancer.seriesguide.migration;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.battlelancer.seriesguide.dataliberation.JsonExportTask;
+import com.battlelancer.seriesguide.dataliberation.OnTaskFinishedListener;
+import com.battlelancer.seriesguide.provider.SeriesContract;
+import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
+import com.battlelancer.seriesguide.util.Utils;
+import com.uwetrottmann.androidutils.AndroidUtils;
+import com.uwetrottmann.seriesguide.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,17 +24,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.battlelancer.seriesguide.dataliberation.JsonExportTask;
-import com.battlelancer.seriesguide.dataliberation.OnTaskFinishedListener;
-import com.battlelancer.seriesguide.provider.SeriesContract;
-import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
-import com.battlelancer.seriesguide.util.Utils;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.uwetrottmann.androidutils.AndroidUtils;
-import com.uwetrottmann.seriesguide.R;
 
 import java.io.File;
 
@@ -131,14 +130,6 @@ public class MigrationActivity extends SherlockFragmentActivity implements JsonE
     protected void onStart() {
         super.onStart();
         validateLaunchStep();
-
-        EasyTracker.getInstance().activityStart(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EasyTracker.getInstance().activityStop(this);
     }
 
     @Override

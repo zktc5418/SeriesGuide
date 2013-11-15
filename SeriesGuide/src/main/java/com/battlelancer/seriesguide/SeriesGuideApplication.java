@@ -17,8 +17,6 @@
 
 package com.battlelancer.seriesguide;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
 import com.battlelancer.seriesguide.ui.SeriesGuidePreferences;
 import com.uwetrottmann.androidutils.AndroidUtils;
 import com.uwetrottmann.seriesguide.BuildConfig;
@@ -53,9 +51,6 @@ public class SeriesGuideApplication extends Application {
         CONTENT_AUTHORITY = getPackageName() + ".provider";
 
         SeriesGuidePreferences.THEME = R.style.SeriesGuideTheme;
-
-        // Set a context for Google Analytics
-        EasyTracker.getInstance().setContext(this);
 
         // Enable StrictMode
         enableStrictMode();
