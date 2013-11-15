@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Backup fehlgeschlagen. Der Backup-Ordner ist nicht verfügbar.</string>
   <string name="backup_success">Sicherung erfolgreich.</string>
   <string name="backup_failed">Sicherung ist fehlgeschlagen.</string>
-  <string name="download_stable">SeriesGuide herunterladen</string>
   <string name="migration_header">Wechseln Sie zur kostenlosen Version</string>
   <string name="migration_description">SeriesGuide X ist jetzt ein Freischalt-Schlüssel für die X Funktionen in der kostenlosen Version (\"X Pass\"). Bitte übertragen Sie Ihre Serien in die kostenlose Version von SeriesGuide. Lassen Sie X installiert um alle Funktionen in der kostenlosen Version freizuschalten.</string>
   <string name="migration_backup">Tippen Sie unten um eine frische Sicherung Ihrer Serien zu erstellen.</string>

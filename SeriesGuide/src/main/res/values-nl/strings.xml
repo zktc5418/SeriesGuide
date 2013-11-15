@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Back-up niet mogelijk. De back-up map is niet beschikbaar.</string>
   <string name="backup_success">Maken back-up succesvol.</string>
   <string name="backup_failed">Maken back-up mislukt.</string>
-  <string name="download_stable">SeriesGuide downloaden</string>
   <string name="migration_header">Migreer naar de gratis versie</string>
   <string name="migration_description">SeriesGuide X is nu een sleutel om X functies in de gratis versie (\"X Pass\") te ontgrendelen. Gelieve uw shows te migreren naar de gratis versie van SeriesGuide. Houd X geïnstalleerd om alle eigenschappen in de gratis versie beschikbaar te maken.</string>
   <string name="migration_backup">Raak hieronder aan om een nieuwe back-up van uw series te maken.</string>

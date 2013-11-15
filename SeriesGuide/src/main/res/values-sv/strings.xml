@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Can\'t backup. The backup folder is not available.</string>
   <string name="backup_success">Säkerhetskopieringen lyckades.</string>
   <string name="backup_failed">Säkerhetskopieringen misslyckades.</string>
-  <string name="download_stable">Hämta SeriesGuide</string>
   <string name="migration_header">Migrate to the free version</string>
   <string name="migration_description">SeriesGuide X is now an unlock key for X features in the free version (\"X Pass\"). Please migrate your shows to the free version of SeriesGuide. Keep X installed to unlock all features in the free version.</string>
   <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>

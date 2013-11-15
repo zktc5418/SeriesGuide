@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Ei voi varmuuskopioida. Varmuuskopiointikansiota ei löydy.</string>
   <string name="backup_success">Varmuuskopiointi onnistui.</string>
   <string name="backup_failed">Varmuuskopiointi epäonnistui.</string>
-  <string name="download_stable">Lataa SeriesGuide</string>
   <string name="migration_header">Siirrä ilmaiseen versioon</string>
   <string name="migration_description">SeriesGuide X on nyt avausavain X-ominaisuuksiin ilmaisessa versiossa (\"elinikäinen X-passi\"). Siirrä ohjelmasi SeriesGuiden ilmaiseen versioon. Pidä X asennettuna avataksesi kaikki ominaisuudet ilmaisessa versiossa.</string>
   <string name="migration_backup">Kosketa alla luodaksesi tuore varmuuskopio ohjelmistasi.</string>

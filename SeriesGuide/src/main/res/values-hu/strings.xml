@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">A biztonsági mentés nem készült el, a biztonsági mentések mappája nem elérhető.</string>
   <string name="backup_success">A mentés sikerült.</string>
   <string name="backup_failed">A biztonsági mentés nem sikerült.</string>
-  <string name="download_stable">A SeriesGuide letöltése</string>
   <string name="migration_header">Az ingyenes verzióra váltás</string>
   <string name="migration_description">A SeriesGuide X egy feloldó kulcs az ingyenes alkalmazás X lehetőségeihez. (\"X Örökös tagság\"). Kérem, vidd át a sorozataidat a SeriesGuide igyenes verziójába. Az X-et tartsd fent telepítve, hogy az ingyenes verzióban elérhesd az összes lehetőséget.</string>
   <string name="migration_backup">Érintsd meg alább a sorozataid biztonsági mentéséhez.</string>

@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">אין אפשרות לגבות. תיקיית הגיבויים אינה זמינה.</string>
   <string name="backup_success">הגיבוי הושלם בהצלחה.</string>
   <string name="backup_failed">הגיבוי נכשל.</string>
-  <string name="download_stable">הורד SeriesGuide</string>
   <string name="migration_header">החלף לגירסה החופשית</string>
   <string name="migration_description">SeriesGuide X מעתה הינו קוד לפתיחת יכולות מנוי ה-X מתוך הגרסה החינמית (X Pass). אנא העבר את הסדרות שלך לגרסה החינמית של SeriesGuide. תשאיר את X מותקן עבור פתיחת כל היכולות בגסה החינמית.</string>
   <string name="migration_backup">Touch below to create a fresh backup of your shows.</string>

@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">No se puede realizar la copia de seguridad. La carpeta de copia de seguridad no está disponible.</string>
   <string name="backup_success">Copia de seguridad correcta.</string>
   <string name="backup_failed">Falló la copia de seguridad.</string>
-  <string name="download_stable">Descargar SeriesGuide</string>
   <string name="migration_header">Migrar a la versión gratuita</string>
   <string name="migration_description">SeriesGuide X es ahora una clave de desbloqueo para las características X en la versión gratuita (\"X Pass\"). Por favor, migra tus series a la versión gratuita de SeriesGuide.Manten X instalado para desbloquear todas las características en la versión gratuita.</string>
   <string name="migration_backup">Pulsa aquí abajo para crear una copia de seguridad de tus series.</string>

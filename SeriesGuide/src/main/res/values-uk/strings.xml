@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Не можливо створити резервну копію. Папка Бекапу недоступна.</string>
   <string name="backup_success">Резервне копіювання пройшло успішно.</string>
   <string name="backup_failed">Не вдалося виконати резервне копіювання.</string>
-  <string name="download_stable">Завантажити SeriesGuide</string>
   <string name="migration_header">Мігрувати до безкоштовної версії</string>
   <string name="migration_description">SeriesGuide X відтепер є ключем для розблокування властивостей X у безкоштовній версії (\"X Pass\"). Будь ласка перенесіть ваші серіали у безкоштовну версію SeriesGuide. Залиште версію X установленою для розблокування усіх функцій у безкоштовній версії.</string>
   <string name="migration_backup">Торкніться нижче, щоб створити свіжу резервну копію ваших серіалів.</string>

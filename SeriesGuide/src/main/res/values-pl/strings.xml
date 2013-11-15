@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Nie można utworzyć kopii zapasowej. Folder kopii zapasowej nie jest dostępny.</string>
   <string name="backup_success">Archiwizacja zakończona.</string>
   <string name="backup_failed">Archiwizacja nieudana.</string>
-  <string name="download_stable">Pobierz SeriesGuide</string>
   <string name="migration_header">Migracja do wersji darmowej</string>
   <string name="migration_description">SeriesGuide X jest teraz kluczem odblokowującym funkcje X w wersji darmowej (\"X Pass\"). Proszę dokonać migracji seriali do darmowej wersji SeriesGuide. Zachowaj zainstalowaną wersję X, aby odblokować wszystkie funkcje w wersji darmowej.</string>
   <string name="migration_backup">Dotknij poniżej aby utworzyć aktualną kopię seriali.</string>

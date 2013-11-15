@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Nelze zálohovat. Složka pro zálohu není k dispozici.</string>
   <string name="backup_success">Zálohování bylo úspěšné.</string>
   <string name="backup_failed">Zálohování selhalo.</string>
-  <string name="download_stable">Stáhnout SeriesGuide</string>
   <string name="migration_header">Přesunutí na bezplatnou verzi</string>
   <string name="migration_description">SeriesGuide X nyní slouží k odemknutí Rozšířených funkcí v bezplatné verzi (\"doživotní verze X\"). Prosím přesuňte své seriály na bezplatnou verzi SeriesGuide. Nechte verzi X nainstalovanou pro odemknutí všech funkcí v bezplatné verzi.</string>
   <string name="migration_backup">Stiskněte dole pro vytvoření nové zálohy vašich seriálů.</string>

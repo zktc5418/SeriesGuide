@@ -5,7 +5,6 @@
   <string name="backup_failed_nosd">Yedeklenemiyor. Yedekleme klasörü bulunmuyor.</string>
   <string name="backup_success">Yedekleme başarılı.</string>
   <string name="backup_failed">Yedekleme başarısız oldu.</string>
-  <string name="download_stable">SeriesGuide indir</string>
   <string name="migration_header">Ücretsiz sürüme geçin</string>
   <string name="migration_description">SeriesGuide X artık ücretsiz sürümdeki X özelliklerini açmak için bir anahtar olarak kullanılıyor (\"X Pass\"). Lütfen dizilerinizi SeriesGuide\'ın ücretsiz sürümüne taşıyın. Ücretsiz sürümdeki tüm özellikleri kullanabilmek için de X\'i kurulu bırakın.</string>
   <string name="migration_backup">Dizilerinizin yeni bir yedeğini almak için aşağıya dokunun.</string>
